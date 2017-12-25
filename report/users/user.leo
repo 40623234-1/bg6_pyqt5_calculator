@@ -60,9 +60,9 @@
 <t tx="40323230.20170123213451.1">@language python
 filename = "report"
 import os, platform
-import chapter
+
 # 更換目錄到 markdown 
-os.chdir("./../markdown")
+
 
 # 若在 Linux 環境則使用 ukai.ttc 系統字形
 if platform.system().lower()=="linux": font = "ukai.ttc"
@@ -99,16 +99,16 @@ g.es('-'*12)</t>
 <t tx="ahshoe.20161120122151.1">---
 university_zh: '國立虎尾科技大學'
 institute_zh: '機械設計工程系'
-category_zh: '計算機程式 bg1 期末報告'
+category_zh: '計算機程式 bg6 期末報告'
 title_zh: 'PyQt5 事件導向計算器'
 title_en: 'PyQt5 Event-Driven Calculator Project'
 author:
-- 設計二乙 1731001 XXX
-- 設計二乙 1731001 XXX
-- 設計二乙 1731001 XXX
-- 設計二乙 1731002 XXX
-- 設計二乙 1731002 XXX
-
+- 設計一乙 40623225 卓昆峰
+- 設計一乙 40623226 鄭清詮
+- 設計一乙 40623227 張耀元
+- 設計一乙 40623234 洪一木
+- 設計一乙 40623235 黃昱誠
+- 設計一乙 40623236 黃子峰
 advisor_zh: '嚴家銘'
 date: '2017.12.18'
 ---
