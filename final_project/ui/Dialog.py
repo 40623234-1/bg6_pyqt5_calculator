@@ -31,7 +31,7 @@ class Dialog(QDialog, Ui_Dialog):
         self.clearAllButton.clicked.connect(self.clearAll)
         
         self.equalButton.clicked.connect(self.equalClicked)
-        
+        self.squareRootButton.clicked.connect(self.unaryOperatorClicked)
         num_button = [self.one,  self.two,  self.three,  self.four,  self.five,  self.six,  self.seven,  self.eight,  self.nine,  self.zero]
         for i in num_button:
             i.clicked.connect(self.digitClicked)
@@ -46,7 +46,8 @@ class Dialog(QDialog, Ui_Dialog):
         #pass
         clickedButton = self.sender()
         digitValue = int(clickedButton.text())
-        
+        if self.display.text() == '0' and digitValue == 0.0:
+            return
         
             
         if self.waitingForOperand:
@@ -56,11 +57,13 @@ class Dialog(QDialog, Ui_Dialog):
         self.display.setText(self.display.text() + str(digitValue))
          
        
-        if self.display.text() == '0' and digitValue == 0.0:
-            return
+        
     def unaryOperatorClicked(self):
         '''單一運算元按下後處理方法'''
-        pass
+        #pass
+        unaryOperator = [self.squareRootButton, self.powerButton,  self.reciprocalButton ]
+        for i in unaryOperator:
+            i.clicked.connect(self.unaryOperatorClicked)
         
     def additiveOperatorClicked(self):
         '''加或減按下後進行的處理方法'''
