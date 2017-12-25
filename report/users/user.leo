@@ -62,7 +62,7 @@ filename = "report"
 import os, platform
 
 # 更換目錄到 markdown 
-
+os.chdir("./../markdown")
 
 # 若在 Linux 環境則使用 ukai.ttc 系統字形
 if platform.system().lower()=="linux": font = "ukai.ttc"
