@@ -73,6 +73,12 @@
 <v t="ahshoe.20170129120858.1"><vh>@edit README.md</vh></v>
 </v>
 </v>
+<v t="leo.20171225162922.2" a="E"><vh>Recovered Nodes</vh>
+<v t="leo.20171225162922.3"><vh>Recovered node "摘要" from @clean cover_and_abstract.md</vh>
+<v t="leo.20171225162922.4"><vh>old:摘要</vh></v>
+<v t="leo.20171225162922.5"><vh>new:摘要</vh></v>
+</v>
+</v>
 </vnodes>
 <tnodes>
 <t tx="40323230.20170123213451.1">@language python
@@ -124,16 +130,18 @@ print('-'*12)</t>
 <t tx="ahshoe.20161120122151.1">---
 university_zh: '國立虎尾科技大學'
 institute_zh: '機械設計工程系'
-category_zh: '電腦輔助設計實習 bg1 期末報告'
-title_zh: '機電資鋼珠循環運動系統設計與製作'
-title_en: 'Design and Manufacturing of an Infomechatronic Marble Machine Project'
+category_zh: '計算機程式 bg6 期末報告'
+title_zh: 'PyQt5 事件導向計算器'
+title_en: 'PyQt5 Event-Driven Calculator Project'
 author:
-- 設計二乙 秦九韶 同學
-- 設計二乙 李治 同學
-- 設計二乙 楊輝 同學
-- 設計二乙 朱世傑 同學
-advisor_zh: 'Dr. Scrum'
-date: '2017.12.15'
+- 設計一乙 40623225 卓昆峰
+- 設計一乙 40623226 鄭清詮
+- 設計一乙 40623227 張耀元
+- 設計一乙 40623234 洪一木
+- 設計一乙 40623235 黃昱誠
+- 設計一乙 40623236 黃子峰
+advisor_zh: '嚴家銘'
+date: '2017.12.18'
 ---
 
 @others
@@ -221,8 +229,9 @@ abstract: |
     + 以 YAML 的方式插入。
     + The '+' indicator says to keep newlines at the end of text blocks.
     + 使用 Markdown 語法。
+    + 前面使用加號
     
-    本研究的重點在於 ...
+    本研究的重點在於每組寫一個計算機程式，並分配每組每個組員需要負責的按鍵，然後依照老師所給的範例寫入各按鍵的程式，這並單單只是抄襲，而是在寫入每行程式之後，並且去理解每行的程式運作及方法，然後將遇到的問題組別一起討論，並將所遇到的問題解決，讓自己本身以及自己組員對計算機程式有更深的了解。
 ---
 
 
@@ -239,6 +248,51 @@ c:\users\cadlab\desktop\mde\python2017fall_36\data\miktex_portable\miktex-portab
 <t tx="leo.20171119233845.1">https://sourceforge.net/p/miktex/discussion/33790/thread/fcf98fa1/</t>
 <t tx="leo.20171119234752.1"></t>
 <t tx="leo.20171119234822.1"></t>
+<t tx="leo.20171225162922.2"></t>
+<t tx="leo.20171225162922.3">(uncached) ahshoe.20170317115820.1
+Diff...
+  ---
+  abstract: |
+      這裡是摘要內容。A pipe character, followed by an indented block of text is treated as a literal block, in which newlines are preserved throughout the block, including the final newline.
+      
+      + 以 YAML 的方式插入。
+      + The '+' indicator says to keep newlines at the end of text blocks.
+      + 使用 Markdown 語法。
+-     + 前面使用加號
+      
+-     本研究的重點在於每組寫一個計算機程式，並分配每組每個組員需要負責的按鍵，然後依照老師所給的範例寫入各按鍵的程式，這並單單只是抄襲，而是在寫入每行程式之後，並且去理解每行的程式運作及方法，然後將遇到的問題組別一起討論，並將所遇到的問題解決，讓自己本身以及自己組員對計算機程式有更深的了解。
++     本研究的重點在於 ...
+  ---
+  
+  
+</t>
+<t tx="leo.20171225162922.4">---
+abstract: |
+    這裡是摘要內容。A pipe character, followed by an indented block of text is treated as a literal block, in which newlines are preserved throughout the block, including the final newline.
+    
+    + 以 YAML 的方式插入。
+    + The '+' indicator says to keep newlines at the end of text blocks.
+    + 使用 Markdown 語法。
+    
+    本研究的重點在於 ...
+---
+
+
+</t>
+<t tx="leo.20171225162922.5">---
+abstract: |
+    這裡是摘要內容。A pipe character, followed by an indented block of text is treated as a literal block, in which newlines are preserved throughout the block, including the final newline.
+    
+    + 以 YAML 的方式插入。
+    + The '+' indicator says to keep newlines at the end of text blocks.
+    + 使用 Markdown 語法。
+    + 前面使用加號
+    
+    本研究的重點在於每組寫一個計算機程式，並分配每組每個組員需要負責的按鍵，然後依照老師所給的範例寫入各按鍵的程式，這並單單只是抄襲，而是在寫入每行程式之後，並且去理解每行的程式運作及方法，然後將遇到的問題組別一起討論，並將所遇到的問題解決，讓自己本身以及自己組員對計算機程式有更深的了解。
+---
+
+
+</t>
 <t tx="yen.20170429103742.1"></t>
 <t tx="yen.20170429103940.1"></t>
 <t tx="yen.20170429110328.1"></t>

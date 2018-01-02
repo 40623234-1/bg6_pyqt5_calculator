@@ -87,7 +87,7 @@ class Dialog(QDialog, Ui_Dialog):
         self.sumSoFar = 0.0
         # 起始時, 等待使用者輸入運算數值變數為真
         self.waitingForOperand = True
-        
+   
         # sumInMemory 儲存計算機記憶體中的值, 配合 MS, M+, 或 MC 按鈕使用
         self.sumInMemory = 0.0
         # factorSoFar 暫存按下乘或除運算時的數值

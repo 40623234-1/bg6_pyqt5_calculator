@@ -24,18 +24,24 @@ class Dialog(QDialog, Ui_Dialog):
         super(Dialog, self).__init__(parent)
         self.setupUi(self)
         
-        clickedButton = self.sender()
+
         
         self.display.setText("0")
-        
+        plus_minus = [self.plusButton,  self.minusButton]       
         self.clearAllButton.clicked.connect(self.clearAll)
-        
+
         self.equalButton.clicked.connect(self.equalClicked)
         self.squareRootButton.clicked.connect(self.unaryOperatorClicked)
         num_button = [self.one,  self.two,  self.three,  self.four,  self.five,  self.six,  self.seven,  self.eight,  self.nine,  self.zero]
         for i in num_button:
             i.clicked.connect(self.digitClicked)
         self.waitingForOperand = True
+        for i in plus_minus:
+            i.clicked.connect(self.additiveOperatorClicked)
+        self.pendingAdditiveOperator = ''
+        self.sumSoFar = 0.0
+        self.waitingForOperand = True
+        self.pendingMultiplicativeOperator = ''        
         '''以下為使用者自行編寫程式碼區'''
 
     def digitClicked(self):
@@ -43,6 +49,7 @@ class Dialog(QDialog, Ui_Dialog):
         使用者按下數字鍵, 必須能夠累積顯示該數字
         當顯示幕已經為 0, 再按零不會顯示 00, 而仍顯示 0 或 0.0
         '''
+
         #pass
         clickedButton = self.sender()
         digitValue = int(clickedButton.text())
@@ -67,11 +74,33 @@ class Dialog(QDialog, Ui_Dialog):
         
     def additiveOperatorClicked(self):
         '''加或減按下後進行的處理方法'''
-        pass
+        clickedButton = self.sender()
+        clickedOperator = clickedButton.text()
+        operand = float(self.display.text())
+        if self.pendingMultiplicativeOperator:
+            if not self.calculate(operand, self.pendingMultiplicativeOperator):
+                self.abortOperation()
+                return
+            self.display.setText(str(self.factorSoFar))
+            operand = self.factorSoFar
+            self.factorSoFar = 0.0
+            self.pendingMultiplicativeOperator = ''
+        if self.pendingAdditiveOperator:
+            if not self.calculate(operand, self.pendingAdditiveOperator):
+                self.abortOperation()
+                return
+                self.display.setText(str(self.sumSoFar))
+        else:
+            self.sumSoFar = operand
+        self.pendingAdditiveOperator = clickedOperator
+        self.waitingForOperand = True        
+        #pass
         
     def multiplicativeOperatorClicked(self):
         '''乘或除按下後進行的處理方法'''
-        pass
+
+            
+        #pass
         
     def equalClicked(self):
         '''等號按下後的處理方法'''
@@ -92,10 +121,9 @@ class Dialog(QDialog, Ui_Dialog):
             self.pendingAdditiveOperator = ''
         else:
             self.sumSoFar = operand
- 
         self.display.setText(str(self.sumSoFar))
         self.sumSoFar = 0.0
-        self.waitingForOperand = True    
+        self.waitingForOperand = True
     def pointClicked(self):
         '''小數點按下後的處理方法'''
         pass
