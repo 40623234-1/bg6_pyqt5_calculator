@@ -29,7 +29,7 @@ class Dialog(QDialog, Ui_Dialog):
         self.display.setText("0")
         plus_minus = [self.plusButton,  self.minusButton]       
         self.clearAllButton.clicked.connect(self.clearAll)
-
+        multiply_divide = [self.timesButton,  self.divisionButton]
         self.equalButton.clicked.connect(self.equalClicked)
         self.squareRootButton.clicked.connect(self.unaryOperatorClicked)
         num_button = [self.one,  self.two,  self.three,  self.four,  self.five,  self.six,  self.seven,  self.eight,  self.nine,  self.zero]
@@ -41,7 +41,9 @@ class Dialog(QDialog, Ui_Dialog):
         self.pendingAdditiveOperator = ''
         self.sumSoFar = 0.0
         self.waitingForOperand = True
-        self.pendingMultiplicativeOperator = ''        
+        self.pendingMultiplicativeOperator = ''
+        for i in multiply_divide:
+            i.clicked.connect(self.multiplicativeOperatorClicked)        
         '''以下為使用者自行編寫程式碼區'''
 
     def digitClicked(self):
@@ -98,7 +100,21 @@ class Dialog(QDialog, Ui_Dialog):
         
     def multiplicativeOperatorClicked(self):
         '''乘或除按下後進行的處理方法'''
+        clickedButton = self.sender()
+        clickedOperator = clickedButton.text()
+        operand = float(self.display.text())
 
+        if self.pendingMultiplicativeOperator:
+            if not self.calculate(operand, self.pendingMultiplicativeOperator):
+                self.abortOperation()
+                return
+
+            self.display.setText(str(self.factorSoFar))
+        else:
+            self.factorSoFar = operand
+
+        self.pendingMultiplicativeOperator = clickedOperator
+        self.waitingForOperand = True
             
         #pass
         
