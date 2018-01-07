@@ -191,14 +191,7 @@ QLineEdit#editorLabel {
 <t tx="ahshoe.20170315212626.1">horizontal: body pane to the left
 vertical: body pane on the botton</t>
 <t tx="ahshoe.20170317115820.1">---
-abstract: |
-    這裡是摘要內容。A pipe character, followed by an indented block of text is treated as a literal block, in which newlines are preserved throughout the block, including the final newline.
-    
-    + 以 YAML 的方式插入。
-    + The '+' indicator says to keep newlines at the end of text blocks.
-    + 使用 Markdown 語法。
-    + 前面使用加號
-    
+abstract: |    
     本研究的重點在於每組寫一個計算機程式，並分配每組每個組員需要負責的按鍵，然後依照老師所給的範例寫入各按鍵的程式，這並單單只是抄襲，而是在寫入每行程式之後，並且去理解每行的程式運作及方法，然後將遇到的問題組別一起討論，並將所遇到的問題解決，讓自己本身以及自己組員對計算機程式有更深的了解。
 ---
 
@@ -230,23 +223,13 @@ abstract: |
 除非必要否則不更動 markdown 目錄下的 template.tex 檔案</t>
 <t tx="yen.20170429214838.1">前言
 ===
-
-計算器程式期末報告前言
+ 
+為了讓我們知道以後協同的慨念和整體運作的方法所以使用MIKTex做報告
+把我們一學期學到的做出整合分配協同出一個可用的計算機
 
 @others</t>
-<t tx="yen.20170429214838.3">前言內容。
+<t tx="yen.20170429214838.3">
 
-\ 
-
-一個範例數學式：$$\beta=\cos^{-1}{\frac{L0^{2}+d_{AB}^{2}-R0^{2}}{2\times{L0\times{d_{AB}}}}}$$
-
-\ 
-
-關於數學式可以參考這裡：[http://www.hostmath.com/][]
-
-[http://www.hostmath.com/]: http://www.hostmath.com/
-
-提及了某篇刊物[@myart]在這裡。
 </t>
 <t tx="yen.20170429214845.1"></t>
 <t tx="yen.20170429215041.1">可攜程式系統介紹
@@ -292,16 +275,22 @@ IPv4 的內容
 [Kmol]: ./images/kmol.png {#fig:駱駝}
 
 print 函式
----
+---def hi ():
+      print(hi)
 
 重複迴圈
----
+---for i in num_button:
+     i.clicked.connect(self.digitClicked)
 
 判斷式
----
+---if self.pendingMultiplicativeOperator:
+            if not self.calculate(operand, self.pendingMultiplicativeOperator):
+                self.abortOperation()
+                return
 
 數列
----</t>
+---num_button = [self.one,  self.two,  \
+        self.three,  self.four,  self.five,  self.six,  self.seven,  self.eight,  self.nine,  self.zero]</t>
 <t tx="yen.20170429215416.1"> PyQt5 簡介
 ===
 
@@ -311,33 +300,7 @@ print 函式
 <t tx="yen.20170429215446.2">PyQt5 架構
 ---
 
-C 的內容
 
-其中包含一個表格：
-
-Table: Python 網際框架比較 {#tbl:網際框架}
-
-| Framework | Started | Py2 | Py3 | ORM | Template Engine | Auth Moudule | Database Admin | Project Scale |
-|:---------:|:-------:|:---:|:---:|:---:|:---------------:|:------------:|:--------------:|:-------------:|
-| Pyramid | 2005 | V | V |  |  | V |  | large |
-| Django | 2006 | V | V | V | V | V | V | large |
-| Flask | 2010 | V |  |  |  |  |  | small |
-
-稱為表 {@tbl:網際框架}。
-
-Table: 價目表 {#tbl:價目表}
-
-| Tables   |      Are      |  Cool |
-|----------|:-------------:|------:|
-| col 1 is |  left-aligned | $1600 |
-| col 2 is |    centered   |   $12 |
-| col 3 is | right-aligned |    $1 |
-
-稱為表 {@tbl:價目表}。
-
-關於表格生成可以參考這裡：[http://www.tablesgenerator.com/markdown_tables]
-
-[http://www.tablesgenerator.com/markdown_tables]: http://www.tablesgenerator.com/markdown_tables
 
 </t>
 <t tx="yen.20170429215617.1">Calculator 程式
@@ -398,11 +361,24 @@ Table: 價目表 {#tbl:價目表}
 
 Github 協同倉儲
 ---
+bg6 協同倉儲:https://github.com/40623234-1/bg6_pyqt5_calculator
 
 學員心得
 ---
+40623236:協同是一個很重要的東西 一個東西完成需要很多人的幫忙和修改
+40623235:
+40623234:
+40623227:
+40623226:
+40623225:
 
-說明各學員任務與執行過程</t>
+說明各學員任務與執行過程
+40623236:數字鍵 等號 計算 清除 等號跟計算最麻煩 因為會影響到很多人當有問題時我都要去幫忙
+40623235:
+40623234:
+40623227:
+40623226:
+40623225:</t>
 <t tx="yen.20170429220128.1">結論
 ===
 

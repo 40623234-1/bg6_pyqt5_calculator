@@ -19,13 +19,19 @@ IPv4 的內容
 [Kmol]: ./images/kmol.png {#fig:駱駝}
 
 print 函式
----
+---def hi ():
+      print(hi)
 
 重複迴圈
----
+---for i in num_button:
+     i.clicked.connect(self.digitClicked)
 
 判斷式
----
+---if self.pendingMultiplicativeOperator:
+            if not self.calculate(operand, self.pendingMultiplicativeOperator):
+                self.abortOperation()
+                return
 
 數列
----
+---num_button = [self.one,  self.two,  \
+        self.three,  self.four,  self.five,  self.six,  self.seven,  self.eight,  self.nine,  self.zero]
