@@ -312,10 +312,10 @@ print 函式
 數列
 ---num_button = [self.one,  self.two,  \
         self.three,  self.four,  self.five,  self.six,  self.seven,  self.eight,  self.nine,  self.zero]</t>
-<t tx="yen.20170429215416.1"> PyQt5 簡介
+<t tx="yen.20170429215416.1">結論
 ===
 
-說明 PyQt5 基本架構與程式開發流程
+要寫一個計算機比想像中的困難，程式的邏輯以及運用方法，都是非常的困難，但在製作過程中，有大家的參與，組員間的討論溝通，解決遇到的問題，這都讓在寫計算機的時候變得簡單許多，能夠完成自己組別的一個計算機。
 
 @others</t>
 <t tx="yen.20170429215446.2">PyQt5 架構
