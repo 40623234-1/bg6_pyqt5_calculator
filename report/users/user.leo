@@ -332,43 +332,53 @@ print 函式
 Calculator 程式細部說明
 
 @others</t>
-<t tx="yen.20170429215851.1">建立對話框
----
+<t tx="yen.20170429215851.1">for i in num_button:
+            i.clicked.connect(self.digitClicked)
+迴圈數字鍵 點案的時候連結到 digitClicked
 
-自動控制 的內容
+self.display.setText("0")
+起始 display 為 0
 
-其中包含一個表格：
+class Dialog(QDialog, Ui_Dialog)
+ Dialog 類別同時繼承 QDialog 與 Ui_Dialog 類別
 
-Table: Python 網際框架比較 {#tbl:網際框架}
+ self.equalButton.clicked.connect(self.equalClicked)
+ 當你按到equalButton連結到equalClicked方法
 
-| Framework | Started | Py2 | Py3 | ORM | Template Engine | Auth Moudule | Database Admin | Project Scale |
-|:---------:|:-------:|:---:|:---:|:---:|:---------------:|:------------:|:--------------:|:-------------:|
-| Pyramid | 2005 | V | V |  |  | V |  | large |
-| Django | 2006 | V | V | V | V | V | V | large |
-| Flask | 2010 | V |  |  |  |  |  | small |
+self.waitingForOperand = True
+ 起始時, 等待使用者輸入運算數值變數為真
 
-稱為表 {@tbl:網際框架}。
+ def digitClicked(self)
+使用者點擊按鈕時送出的按鈕指標類別, 在此利用此按鍵類別建立案例
 
-Table: 價目表 {#tbl:價目表}
+clickedButton = self.sender()
+clickedButton 即為當下使用者所按下的按鈕物件
 
-| Tables   |      Are      |  Cool |
-|----------|:-------------:|------:|
-| col 1 is |  left-aligned | $1600 |
-| col 2 is |    centered   |   $12 |
-| col 3 is | right-aligned |    $1 |
+if self.pendingAdditiveOperator:
+            if not self.calculate(operand, self.pendingAdditiveOperator):
+                self.abortOperation()
+                return
+            self.display.setText(str(self.sumSoFar))
+        else:
 
-稱為表 {@tbl:價目表}。
+        self.pendingAdditiveOperator = clickedOperator
+       
+        self.waitingForOperand = True
 
-關於表格生成可以參考這裡：[http://www.tablesgenerator.com/markdown_tables]
+            顯示目前的運算結果
+            假如 self.pendingAdditiveOperator 為 False, 則將運算數與 self.fumSoFar 對應
+            self.sumSoFar = operand
+        能夠重複按下加或減, 以目前的運算數值執行重複運算
+        進入等待另外一個運算數值的階段, 設為 True 才會清空 LineEdit
+ if self.waitingForOperand:
+            return
 
-[http://www.tablesgenerator.com/markdown_tables]: http://www.tablesgenerator.com/markdown_tables
+        self.display.setText('0')
+        self.waitingForOperand = True
+在等待運算數階段, 直接跳出 slot, 不會清除顯示幕
+清除顯示幕後, 重置等待運算數狀態變數
 
-建立按鈕
----
-
-建立程式碼
----
-
+ 
 </t>
 <t tx="yen.20170429215922.1">心得
 ===
@@ -400,7 +410,8 @@ bg6 協同倉儲:https://github.com/40623234-1/bg6_pyqt5_calculator
 
 40623226:
 
-40623225:
+40623225:本來從一開始甚麼東西都是自己來，到現在變成一個團隊憶起分工合作，一起將一個計算機做出來別新奇
+
 
 
 說明各學員任務與執行過程
@@ -415,7 +426,7 @@ bg6 協同倉儲:https://github.com/40623234-1/bg6_pyqt5_calculator
 
 40623226:
 
-40623225:</t>
+40623225:任務分配是乘跟除，需要去了解各個字所代表的意思，覺得這個部分特別的難</t>
 <t tx="yen.20170429220128.1">結論
 ===
 
