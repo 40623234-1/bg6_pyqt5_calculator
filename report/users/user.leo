@@ -268,15 +268,11 @@ abstract: |
 <t tx="yen.20170429215130.1">啟動與關閉
 ---
 
-Windows 的內容
+![z8LKAvS][]
 
-有一張圖片：
 
-![Kmol][]
+[[z8LKAvS]]: ./images/[z8LKAvS].png{@fig:start stop}
 
-稱為圖 {@fig:駱駝}。
-
-各 md 檔案可以在 images 目錄下自訂與 md 檔案名稱相同的子目錄存放影像檔案
 
 啟動與關閉2
 ---</t>
