@@ -1,0 +1,549 @@
+\documentclass[12pt,,]{report}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+
+    \usepackage{xeCJK}
+    % 中文自動換行
+    \XeTeXlinebreaklocale "zh"
+    % 文字的彈性間距
+    \XeTeXlinebreakskip = 0pt plus 1pt
+    \newfontlanguage{Chinese}{CHN}
+    % 章次20級，節次16級，小節次以下14級，本文12級字
+    \def\LARGE{\fontsize{20}{30}\selectfont}%章次
+    \def\Large{\fontsize{16}{24}\selectfont}%節次
+    \def\large{\fontsize{14}{21}\selectfont}%小節次
+    \usepackage{indentfirst}
+    \usepackage{CJKnumb}
+    \renewcommand{\figurename}{圖}
+    \renewcommand{\thefigure}{{\arabic{chapter}}.\arabic{figure}}
+    \renewcommand{\tablename}{表}
+    \renewcommand{\thetable}{{\arabic{chapter}}.\arabic{table}}
+    %重製章節
+    \renewcommand{\chaptername}{}
+    \renewcommand{\thechapter}{第\CJKnumber{\arabic{chapter}}章}
+    \renewcommand{\thesection}{{\arabic{chapter}}.\arabic{section}}
+    \renewcommand{\thesubsection}{{\arabic{chapter}}.{\arabic{section}}.\arabic{subsection}}
+    %設定行距與中英文字型
+    \linespread{1}\selectfont
+    \setCJKmainfont{SimSun}
+    \setmainfont{Times New Roman}
+    \setromanfont{Times New Roman}
+    \setmonofont{Times New Roman}
+    %重製章節標籤
+    \usepackage{titlesec}
+    \titleformat{\chapter}[block]{\LARGE\centering}{\thechapter}{0.5em}{}
+    \titleformat{\section}[block]{\Large}{\thesection}{0.5em}{}
+    \titleformat{\subsection}[block]{\large}{\thesubsection}{0.5em}{}
+    % 重製目錄
+    \usepackage{titletoc}
+    \titlespacing{\chapter}{0pt}{*0}{*2}
+    \titlespacing{\section}{0pt}{*1}{*1}
+    \titlespacing{\subsection}{0pt}{*1}{*1}
+    \titlespacing{\subsubsection}{0pt}{*1}{*1}
+    \titlecontents{chapter}[0em]{}{\contentspush{\thecontentslabel}\hspace*{1em}}{}{\titlerule*[0.7pc]{.}\contentspage}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage[unicode=true]{hyperref}
+\hypersetup{
+            pdfauthor={設計一乙 40623225 卓昆峰; 設計一乙 40623226 鄭清詮; 設計一乙 40623227 張耀元; 設計一乙 40623234 洪一木; 設計一乙 40623235 黃昱誠; 設計一乙 40623236 黃子峰},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[shorthands=off,main=]{babel}
+\else
+  \usepackage{polyglossia}
+  \setmainlanguage[]{}
+\fi
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
+\begin{document}
+%Cover Start
+\begin{titlepage}
+\vspace{1cm}
+\begin{center}
+\fontsize{36}{54}\selectfont{
+    國立虎尾科技大學\par
+}
+\fontsize{28}{42}\selectfont{機械設計工程系\par}
+\fontsize{24}{36}\selectfont{計算機程式 bg6 期末報告\par}
+\vspace{1.5cm}
+\fontsize{20}{30}\selectfont{
+    PyQt5 事件導向計算器\par
+    PyQt5 Event-Driven Calculator Project\par
+}
+\vspace{\fill}
+\fontsize{18}{27}\selectfont{
+    學生：\par
+    設計一乙 40623225 卓昆峰 \par 設計一乙 40623226 鄭清詮 \par 設計一乙 40623227 張耀元 \par 設計一乙 40623234 洪一木 \par 設計一乙 40623235 黃昱誠 \par 設計一乙 40623236 黃子峰 \par
+    指導教授：嚴家銘\par
+}
+\vspace{1.5cm}
+\fontsize{16}{24}\selectfont{2017.12.18\par}
+\end{center}
+\vspace{1cm}
+\end{titlepage}
+
+\newcommand\frontmatter{
+    \cleardoublepage
+    \pagenumbering{roman}
+}
+
+\newcommand\mainmatter{
+    \cleardoublepage
+    \pagenumbering{arabic}
+}
+
+\newcommand\backmatter{
+    \if@openright
+        \cleardoublepage
+    \else
+        \clearpage
+    \fi
+}
+
+%Document start
+
+% Set page number to arabic i ii...
+\frontmatter
+\renewcommand{\abstractname}{\LARGE \center 摘要}
+\chapter*{摘要}
+\addcontentsline{toc}{chapter}{摘要}
+\fontsize{14}{21}\selectfont{本研究的重點在於每組寫一個計算機程式，並分配每組每個組員需要負責的按鍵，然後依照老師所給的範例寫入各按鍵的程式，這並非只是抄襲，而是在寫入每行程式之後，並且去理解每行的程式運作及方法，然後將遇到的問題組別一起討論，並將所遇到的問題解決，讓自己本身以及自己組員對計算機程式有更深的了解。
+
+\begin{itemize}
+\item
+  我們使用eric6來做計算機程式
+\item
+  使用github來做協同
+\end{itemize}}
+
+
+\begingroup
+    \renewcommand{\contentsname}{\center 目錄 \addcontentsline{toc}{chapter}{目錄}}
+    \renewcommand{\numberline}[1]{~#1\hspace*{1em}}
+        \setcounter{tocdepth}{2}
+    \tableofcontents
+    \newcommand{\lotlabel}{表}
+    \renewcommand{\listtablename}{\center 表目錄 \addcontentsline{toc}{chapter}{表目錄}}
+    \renewcommand{\numberline}[1]{\lotlabel~#1\hspace*{1em}}
+    \listoftables
+    \newcommand{\loflabel}{圖}
+    \renewcommand{\listfigurename}{\center 圖目錄 \addcontentsline{toc}{chapter}{圖目錄}}
+    \renewcommand{\numberline}[1]{\loflabel~#1\hspace*{1em}}
+    \listoffigures
+\endgroup
+
+% Start normal page number, 1 2 3
+\mainmatter
+\hypertarget{ux524dux8a00}{%
+\chapter{前言}\label{ux524dux8a00}}
+
+前言
+
+為了讓我們知道以後協同的慨念和整體運作的方法所以使用MIKTex做報告
+把我們一學期學到的做出整合分配協同出一個可用的計算機
+
+機械設計就是靈活運用六種表達,
+明確說明如何透過固體、流體與軟體元件之互動運作,
+而能達成預定結果之明確與具體表達.
+
+設計是一種明確與具體的表達, 而且是在仔細思考、多方考量後所完成的表達,
+表達具有六種形式, 包括口語、文字、2D、3D、數學與實體表達,
+設計的結果可以讓執行者有所依循, 根據指示執行後, 可得預期之結果.
+
+機械是一種器物, 而且是由固體、流體與軟體元件精巧組合而成, 可互動運作,
+達成特定功能之器物
+
+三種類型的電腦與相關交互輔助設計模式:
+
+近端(local) - 工程師面前的電腦, 以及機械設計系內部網路上連線的電腦.
+
+遠端(cloud) - 廣域網路上的電腦.
+
+可攜系統(mobile) - 工程師可以隨身啟動, 在各近端與遠端間移動,
+仍能保有客製化的設定環境.
+
+\hypertarget{ux53efux651cux7a0bux5f0fux7cfbux7d71ux4ecbux7d39}{%
+\chapter{可攜程式系統介紹}\label{ux53efux651cux7a0bux5f0fux7cfbux7d71ux4ecbux7d39}}
+
+可攜程式系統介紹
+
+\hypertarget{ux555fux52d5ux8207ux95dcux9589}{%
+\section{啟動與關閉}\label{ux555fux52d5ux8207ux95dcux9589}}
+
+start.bat 會開啟cover\_and\_abstract cmd exe
+
+可以從cover\_and\_abstract 中修改 start.bat讓他開啟時可以一起開啟leo
+
+從cover\_and\_abstract 中修改 leo 讓他在 start.bat
+開啟時可以找到要開的檔案
+
+stop.bat 的作用關閉全部的檔案
+
+\hypertarget{ux53efux651cux5f0fux7cfbux7d71ux4ecbux7d39}{%
+\section{可攜式系統介紹}\label{ux53efux651cux5f0fux7cfbux7d71ux4ecbux7d39}}
+
+可攜式系統的意義:為了能讓自己隨身隨地完成自己的工作
+和建立自己習慣的開發方式
+
+miktex:讓文字檔跟圖檔轉成PDF檔
+
+GIMP2:修剪圖片裁切圖片
+
+DiaPortable:可繪製圖形註解圖片
+
+github:組態管理的一種 能讓多人協同 優點公開不用錢
+
+Python36:在不同電腦能進行Python程式開發
+
+Share-X:錄製影片 截圖
+
+\hypertarget{calculator-ux7a0bux5f0f}{%
+\chapter{Calculator 程式}\label{calculator-ux7a0bux5f0f}}
+
+Calculator 程式細部說明
+
+\hypertarget{ux8a08ux7b97ux6a5fux7a0bux5f0fux5167ux5bb9}{%
+\section{計算機程式內容}\label{ux8a08ux7b97ux6a5fux7a0bux5f0fux5167ux5bb9}}
+
+for i in num\_button: i.clicked.connect(self.digitClicked)
+
+迴圈數字鍵 點案的時候連結到 digitClicked
+
+self.display.setText(``0'')
+
+起始 display 為 0
+
+class Dialog(QDialog, Ui\_Dialog)
+
+Dialog 類別同時繼承 QDialog 與 Ui\_Dialog 類別
+
+self.equalButton.clicked.connect(self.equalClicked)
+
+當你按到equalButton連結到equalClicked方法
+
+self.waitingForOperand = True
+
+起始時, 等待使用者輸入運算數值變數為真
+
+def digitClicked(self)
+
+使用者點擊按鈕時送出的按鈕指標類別, 在此利用此按鍵類別建立案例
+
+clickedButton = self.sender()
+
+clickedButton 即為當下使用者所按下的按鈕物件
+
+if self.pendingAdditiveOperator: if not self.calculate(operand,
+self.pendingAdditiveOperator):
+
+\begin{verbatim}
+            self.abortOperation()
+            
+            return
+            
+        self.display.setText(str(self.sumSoFar))
+        
+    else:
+
+    self.pendingAdditiveOperator = clickedOperator
+   
+    self.waitingForOperand = True
+
+        顯示目前的運算結果
+        
+        假如 self.pendingAdditiveOperator 為 False, 則將運算數與 self.fumSoFar 對應
+        
+        self.sumSoFar = operand
+        
+    能夠重複按下加或減, 以目前的運算數值執行重複運算
+  
+    進入等待另外一個運算數值的階段, 設為 True 才會清空 LineEdit
+\end{verbatim}
+
+if self.waitingForOperand: return
+
+\begin{verbatim}
+    self.display.setText('0')
+    
+    self.waitingForOperand = True
+\end{verbatim}
+
+在等待運算數階段, 直接跳出 slot, 不會清除顯示幕
+
+清除顯示幕後, 重置等待運算數狀態變數
+
+\hypertarget{python-ux7a0bux5f0fux8a9eux6cd5}{%
+\chapter{Python 程式語法}\label{python-ux7a0bux5f0fux8a9eux6cd5}}
+
+Python 程式語法
+
+\hypertarget{ux8b8aux6578ux547dux540d}{%
+\section{變數命名}\label{ux8b8aux6578ux547dux540d}}
+
+Python3 變數命名規則與關鍵字 Python 英文變數命名規格
+
+變數必須以英文字母大寫或小寫或底線開頭 變數其餘字元可以是英文大小寫字母,
+數字或底線 變數區分英文大小寫 變數不限字元長度
+不可使用關鍵字當作變數名稱
+
+Python3 的程式關鍵字, 使用者命名變數時, 必須避開下列保留字.
+
+Python keywords: {[}`False', `None', `True', `and', `as', `assert',
+`break', `class', `continue', `def', `del', `elif', `else', `except',
+`finally', `for', `from', `global', `if', `import', `in', `is',
+`lambda', `nonlocal', `not', `or', `pass', `raise', `return', `try',
+`while', `with', `yield'{]}
+
+使用有意義且適當長度的變數名稱， 例如: 使用 length 代表長度,
+不要單獨使用 l 或 L, 也不要使用 this\_is\_the\_length
+程式前後變數命名方式盡量一致, 例如: 使用 rect\_length 或 RectLength
+用底線開頭的變數通常具有特殊意義
+
+\hypertarget{print-ux51fdux5f0f}{%
+\section{print 函式}\label{print-ux51fdux5f0f}}
+
+---def hi (): print(hi)
+
+\hypertarget{ux91cdux8907ux8ff4ux5708}{%
+\section{重複迴圈}\label{ux91cdux8907ux8ff4ux5708}}
+
+---for i in num\_button: i.clicked.connect(self.digitClicked)
+
+\hypertarget{ux5224ux65b7ux5f0f}{%
+\section{判斷式}\label{ux5224ux65b7ux5f0f}}
+
+---if self.pendingMultiplicativeOperator: if not self.calculate(operand,
+self.pendingMultiplicativeOperator): self.abortOperation() return
+
+\hypertarget{ux6578ux5217}{%
+\section{數列}\label{ux6578ux5217}}
+
+---num\_button = {[}self.one, self.two,\\
+self.three, self.four, self.five, self.six, self.seven, self.eight,
+self.nine, self.zero{]}
+
+\hypertarget{pyqt5}{%
+\chapter{PyQt5}\label{pyqt5}}
+
+\hypertarget{pyqt5-ux67b6ux69cb}{%
+\section{PyQt5 架構}\label{pyqt5-ux67b6ux69cb}}
+
+精巧的電子零件，是透過輸入 010101，稱為「機器碼 (Machine
+code)」的指令才能運作的。電子裝置可以直接辨識與執行機器碼的指令，而且不同的裝置使用的機器碼語言是不一樣的。
+
+想當然爾，人類不可能一直查詢機器碼，再輸入給電子零件，因此才產生「程式
+(Program)」。
+
+組合語言 (Combination language)
+是一種用於可編成組件的程式語言，一種組合語言專用於某種電腦的系統結構。換句話說，組合語言僅次於機器碼，可以以較簡單的方式命令，而且開發人員可以輕易辨別位址與數值
+
+C 語言透過「編譯
+(Compile)」這個流程，將程式碼轉為機器碼執行。不同作業系統存在相應的「編譯器
+(Compiler)」，對應到硬體的機器碼執行，而某些編譯器正是組合語言撰寫的。
+
+Python 語言是透過 C
+語言編寫的直譯器進行轉譯與執行，因此不須經過編譯動作，甚至可以藉由伺服器在網路端執行，將結果回傳給客戶端。
+
+低階語言(C)有以下特性：
+
+處理範圍廣，而且可以直接影響運作效能。
+較不易閱讀與開發，一件工作必須寫得較為詳細。
+
+高階語言(Python)則反之：
+
+處理範圍和運作效能端看基礎架構而定，大量運算時效能不如低階語言。
+簡單且優化過的內建命令，往往會有簡單的表示法與程式庫、模組。
+
+PyQt 幾乎支援 Qt 大部分的功能，並且將較專門的功能另外分成 PyQt Chart（2D
+圖表）、PyQt Data Visualization（3D 圖表）、PyQt
+Purchasing（應用程式購買功能）。
+
+另外 QScintilla 是一個將 Scintilla 連結至 PyQt 的套件（在 C++ 可以直接用
+Qt 和 Scintilla 即可），用途是辨識文字中的程式語言，以亮顯 (highlight)
+的方式呈現，可以用作程式語言的辨識功能。
+
+導入 sys 模組
+
+import sys
+
+導入 keyword 模組
+
+import keyword
+
+print() 函式用法
+
+print() 為 Python 程式語言中用來列印數值或字串的函式, 其中有 sep
+變數定義分隔符號, ｓep 內定為 ``,'', end 變數則用來定義列印結尾的符號,
+end 內定為跳行符號.
+
+簡單的 for 迴圈範例
+
+for i in range(10): print(i)
+
+函式用法與呼叫 使用者可以利用下列程式, 練習 def 函式定義與呼叫的用法.
+
+定義函式
+
+def square\_of\_x(x): return x*x
+
+呼叫函式
+
+y = square\_of\_x(3) print(y)
+
+列印 y 對應內容
+
+\hypertarget{ux5fc3ux5f97}{%
+\chapter{心得}\label{ux5fc3ux5f97}}
+
+期末報告心得
+
+\hypertarget{fossil-scm}{%
+\section{Fossil SCM}\label{fossil-scm}}
+
+40623236:組成內容與狀態的配置, 因此軟體組態管理 就是針對軟體開發過程,
+有關組成內容與狀態配置的管理
+
+40623235:對於在配置上，有個方便的儲存與檢視的地方，不怕被刪檔，可靠而且對於程式設計師而言，日常工作中最常使用的工具，可能會是編輯器，或專為某種程式語言所設計的整合開發環境；而對負責大型軟體開發工作的軟體團隊成員來說，版本控制系統則是另一套相當重要的軟體工具。
+
+40623234:一個相當簡單明瞭的程式，快速方便的就像一個大倉庫，隨時隨地的能將資料上傳與複製。
+
+40623227:
+
+40623226:
+
+40623225:一個簡單可以依賴的一個軟體配置管理，這個是非常重要的
+
+\hypertarget{ux7db2ux8a8cux5fc3ux5f97}{%
+\section{網誌心得}\label{ux7db2ux8a8cux5fc3ux5f97}}
+
+40623236:更新網誌是一件很麻煩的事 但是在打的過程中可以回復今天上的東西
+以後旺季的時候也可以回去觀看複習 走過必留下痕跡
+在網誌中遇到的問題難保以後不會遇到 這樣多去看已定可以更加進步
+
+40623235:到期中考之前，我都還在摸索，可是在那之後，我知道他的重要性，而在裡面的內容，是關於以前學習的歷程，還有碰到的問題，都一一的在各個部分都清清楚楚的表示出來，慢慢的，會更加的充實
+
+40623234:網誌能記錄一切所有的學習歷程，雖然在上傳時較不方便也較複雜，但整體上去相當的實用，尤其是最下面的討論區。
+
+40623227:
+
+40623226:
+
+40623225:一開始學如何修改網誌的時候，非常讓人頭疼，可是越來越常修改的時候，就覺得已經開始熟悉它的步驟
+
+\hypertarget{github-ux5354ux540cux5009ux5132}{%
+\section{Github 協同倉儲}\label{github-ux5354ux540cux5009ux5132}}
+
+bg6 協同倉儲:https://github.com/40623234-1/bg6\_pyqt5\_calculator
+
+40623236:在推東西的時後要先記得pull 雖然協同很方便但是溝通是不可或缺的
+
+40623235:Github協同倉儲有多彈性，還有做新增與修改來說，它是一個相當實用的軟體，而裡面開發的東西，是一些人共同要達成的目標
+
+40623234:github是相當方便的倉儲，比fossil更進一步，能與他人進行同步，並用pull與push進行更新與上傳，方便許多。
+
+40623227:
+
+40623226:
+
+40623225:協同倉儲可以讓在不同地方的人進行修改推送等功能，非常的方便快速
+
+\hypertarget{ux5b78ux54e1ux5fc3ux5f97}{%
+\section{學員心得}\label{ux5b78ux54e1ux5fc3ux5f97}}
+
+40623236:協同是一個很重要的東西 一個東西完成需要很多人的幫忙和修改
+
+40623235:和別人一起合作與探討，然而完成一件事情，是很有成就感的，
+組員間互相支援，互相的討論，而且也有展現自我的空間，陪著組員一步一步慢慢做，
+可以發現自己跟別人都可以慢慢的進步，雖然犯了錯，也是進步的關鍵
+
+40623234:在一開始時，我剛進這間學校後發現有計算機程式這堂課，
+那一瞬間想到高職時尚的計算機概論， 差不多是了解電腦程式和灌灌程式，
+後來知道其實fossil與github的方便性與快速性，
+了解為何世界的科技能進步如此快速。
+
+40623227:因為是初學者，所以一個人製作是非常困難的，因此需要組員間的討論才能完成
+
+40623226:每個人都分配到特定的工作，不像之前一樣一個人辛苦地慢慢做，有了團隊分工效率變得更快
+
+40623225:本來從一開始甚麼東西都是自己來，到現在變成一個團隊憶起分工合作，一起將一個計算機做出來別新奇
+
+說明各學員任務與執行過程
+
+40623236:數字鍵 等號 計算 清除 等號跟計算最麻煩
+因為會影響到很多人當有問題時我都要去幫忙
+
+40623235:根號 平方
+以及分數是相較於其他部分來說是算簡單的，所以常去幫其他組員要做的部分，一起解決問題，或是集結大家來討論
+
+40623234:加減的運算
+雖然加減運算的先乘除後加減的程式語言很難，但是問問同學後就會瞭解許多。
+
+40623227:+-號 報告
+因為報告要集結大家意見，所以在寫的過程中幫忙我的其實很多
+
+40623226:小數點、
+變號鍵、回復鍵、清除鍵按下後的處理方法，最後做的雖然比較複雜但因為最後推不會發生衝突
+
+40623225:任務分配是乘跟除，需要去了解各個字所代表的意思，覺得這個部分特別的難
+
+\hypertarget{ux7d50ux8ad6}{%
+\chapter{結論}\label{ux7d50ux8ad6}}
+
+期末報告結論
+
+\hypertarget{ux7d50ux8ad6ux8207ux5efaux8b70}{%
+\section{結論與建議}\label{ux7d50ux8ad6ux8207ux5efaux8b70}}
+
+要寫一個計算機比想像中的困難，程式的邏輯以及運用方法，都是非常的困難，但在製作過程中，有大家的參與，組員間的討論溝通，解決遇到的問題，這都讓在寫計算機的時候變得簡單許多，能夠完成自己組別的一個計算機。
+建議:需要隨時注意完成度
+
+\hypertarget{ux53c3ux8003ux6587ux737b}{%
+\chapter{參考文獻}\label{ux53c3ux8003ux6587ux737b}}
+
+
+\end{document}
